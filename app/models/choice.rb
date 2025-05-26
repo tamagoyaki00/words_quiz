@@ -3,4 +3,8 @@ class Choice < ApplicationRecord
   has_many :answers
 
   validates :content, presence: true
+
+  def correct_answer?
+    correct
+  end
 end

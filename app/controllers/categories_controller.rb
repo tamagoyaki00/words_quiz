@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    Rails.logger.debug "IDはこれ!: #{params[:id]}"
     @category = Category.find(params[:id])
     question_id = session[:question_ids][session[:current_index]]
     if question_id.nil?
@@ -14,7 +13,6 @@ class CategoriesController < ApplicationController
       return
     end
     @question = Question.find(question_id)
-    Rails.logger.debug "#{@category.inspect}"
   end
 
   private

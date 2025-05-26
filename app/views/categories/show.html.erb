@@ -6,8 +6,8 @@
 <%= form_with url: quiz_answer_path, method: :post, data: { turbo: false }, local: true do %>
   <% @question.choices.each_with_index do |choice, index| %>
     <div>
-      <%= radio_button_tag :answer, index + 1, false, id: "answer#{index + 1}" %>
-      <%= label_tag "answer#{index + 1}", choice.content %>
+      <%= radio_button_tag :answer, choice.id %>
+      <%= label_tag "answer_#{choice.id}", choice.content %>
     </div>
   <% end %>
   <%= submit_tag "回答する", class: "bg-green-500 text-white py-1 px-4 rounded mt-4" %>
