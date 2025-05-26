@@ -1,1 +1,14 @@
+
 <h2><%= @score %> / <%= @question_size %> 問正解！</h2>
+<%= link_to "もう一度挑戦", categories_path %>
+
+<!-- ページ表示時に実行 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  });
+</script>
