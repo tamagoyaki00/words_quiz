@@ -1,5 +1,5 @@
 <h1>クイズをカテゴリから選んでね！</h1>
 
 <% @categories.each do |category| %>
-  <%= link_to category.name,  category_path(category), class: "btn btn-primary m-2" %>
+  <%= link_to category.name,  start_category_path(category), class: "btn btn-primary m-2" %>
 <% end %>

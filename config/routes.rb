@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
-  resources :categories, only: %i[index show]
+  resources :categories, only: %i[index show] do
+    member do
+      get :start, to: 'categories#start'
+    end
+  end
 
   post 'quiz/answer',  to: 'quiz#answer'
   get  'quiz/result',  to: 'quiz#result'

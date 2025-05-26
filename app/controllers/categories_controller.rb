@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :prepare_quiz_session, only: %i[show]
 
   def index
     @categories = Category.all
@@ -15,16 +14,16 @@ class CategoriesController < ApplicationController
     @question = Question.find(question_id)
   end
 
+  #クイズ開始
+  def start
+    @category = Category.find(params[:id])
+    Rails.logger.debug "カテゴリーID: #{@category}"
+    session[:question_ids] = Question.where(category_id: params[:id]).pluck(:id).sample(5)
+    session[:current_index] = 0
+    session[:correct_count] = 0
+    session[:category_id] = @category.id
+  end
+
   private
 
-  def prepare_quiz_session
-    category_id = params[:id]
-
-    if session[:question_ids].blank? || session[:category_id] != category_id
-      session[:category_id] = category_id
-      session[:question_ids] = Question.where(category_id: category_id).pluck(:id).sample(5)
-      session[:current_index] = 0
-      session[:answers] = []
-    end
-  end
 end

@@ -1,13 +1,8 @@
 class QuizController < ApplicationController
   before_action :prepare_quiz_session, only: %i[show answer]
 
-  #クイズ開始
-  def start;end
 
-  #問題と選択肢表示
-
-
-  #解答の正誤判定
+  #解答
   def answer
     selected_choice_id = params[:answer]
 
@@ -17,18 +12,17 @@ class QuizController < ApplicationController
       render "categories/show" and return
     end
     
+    #解答の正誤判定
     selected_choice = Choice.find(selected_choice_id)
     increment_correct_count if selected_choice.correct_answer?
 
     session[:current_index] += 1
+    #規定の問題数までループ
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
     else
       redirect_to quiz_result_path
     end
-    Rails.logger.debug "選択肢ID: #{selected_choice_id}"
-    Rails.logger.debug "正解か？: #{selected_choice.correct_answer?}"
-    Rails.logger.debug "現在のインデックス: #{session[:current_index]}"
   end
 
   #結果表示
