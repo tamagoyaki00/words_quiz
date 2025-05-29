@@ -5,7 +5,7 @@
         <%= link_to "もう一度挑戦", categories_path %>
         <%= link_to "Xでシェア","https://twitter.com/intent/tweet?" +
         "url=#{root_url}result/#{@score}" +
-        "&text=#{CGI.escape("世代別言葉クイズ！#{@score}点だったよー！！！ないすー！")}" +
+        "&text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで#{@score}点だったよー！！！ないすー！")}" +
         "&hashtags=#{CGI.escape("世代別言葉クイズ")}",
         target: "_blank", rel: "noopener", class: "ml-4" %>
       </div>

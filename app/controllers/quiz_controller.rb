@@ -21,12 +21,13 @@ class QuizController < ApplicationController
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
     else
-      redirect_to quiz_result_path
+      redirect_to quiz_result_path(category_id: session[:category_id])
     end
   end
 
   #結果表示
   def result
+    @category = Category.find(params[:category_id])
     @question_size = session[:question_ids].size
     @score = session[:correct_count]
   end
