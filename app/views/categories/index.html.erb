@@ -1,5 +1,16 @@
-<h1>クイズをカテゴリから選んでね！</h1>
-
-<% @categories.each do |category| %>
-  <%= link_to category.name,  start_category_path(category), class: "inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 m-2" %>
-<% end %>
+<div class="layout-main">
+  <div class="layout-section bg-green/30 backdrop-invert backdrop-opacity-30">
+    <h1 class="text-5xl">カテゴリを選択</h1>
+    <ul class="flex flex-col space-y-5 mt-10 text-2xl">
+      <% @categories.each do |category| %>
+        <li>
+          <%= link_to start_category_path(category), class: "action-link" do %>
+            <span class="action-link-text">
+              <%= category.name %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

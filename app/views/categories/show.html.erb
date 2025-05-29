@@ -1,15 +1,26 @@
-<h2><%= @question.term %></h2>
-<%# 問題 %>
-  <div class=''>問題</div>
+<div class="layout-main">
+  <div class="layout-section bg-green/30 backdrop-invert backdrop-opacity-30 space-y-5 mt-10 text-2xl">
+  <!-- 問題 -->
+      <h1 class="text-black">Q問題:<%= @question.term %></h1>
 
-<%# 解答 %>
-<%= form_with url: quiz_answer_path, method: :post, data: { turbo: false }, local: true do %>
-  <% @question.choices.each_with_index do |choice, index| %>
-    <div>
-      <%= radio_button_tag :answer, choice.id %>
-      <%= label_tag "answer_#{choice.id}", choice.content %>
-    </div>
-  <% end %>
-  <%= submit_tag "回答する", class: "bg-green-500 text-white py-1 px-4 rounded mt-4" %>
 
-<% end %>
+    <!-- 解答 -->
+    <%= form_with url: quiz_answer_path, method: :post, local: true do %>
+      <div class="flex flex-col space-y-4">
+        <% @question.choices.each do |choice| %>
+          <div>
+            <!-- ラジオボタンは非表示に -->
+            <%= radio_button_tag :answer, choice.id, false, id: "choice_#{choice.id}", class: "hidden peer" %>
+
+            <!-- ラベルを装飾して選択肢UIに -->
+            <%= label_tag "choice_#{choice.id}", class: "choice-label" do %>
+              <%= choice.content %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <%= submit_tag "回答", class: "bg-white text-yellow-500 py-1 px-4 rounded mt-4" %>
+
+    <% end %>
+  </div>
+</div>
