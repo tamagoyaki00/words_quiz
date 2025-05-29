@@ -1,1 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 @import "tailwindcss";
+
+@theme {
+  /* fontFamily */
+  --font-dot: "Dotgothic16", sans-serif; 
+}
+
+.layout-main {
+  @apply h-full flex items-center justify-center;
+}
+
+.layout-section {
+  @apply text-white border-4 border-yellow-500 rounded-xl
+         p-6 shadow-lg max-w-xl w-full mx-auto 
+         flex flex-col items-center justify-center;
+}
+
+.choice-label {
+  @apply cursor-pointer block pl-6 relative 
+         peer-checked:text-yellow-300 
+         peer-checked:before:opacity-100 
+         before:absolute before:left-0 
+         before:content-['▶'] 
+         before:opacity-0 
+         before:transition-opacity;
+}
+
+.action-link {
+  @apply text-2xl mt-10 group block hover:text-gray-300 transition-colors duration-200;
+}
+
+.action-link-text {
+  @apply relative pl-6 
+         before:absolute before:left-0 
+         before:opacity-0 
+         group-hover:before:opacity-100 
+         group-hover:before:content-['▶'];
+}
