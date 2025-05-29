@@ -1,9 +1,15 @@
 <div class="layout-main">
   <div class="layout-section bg-green/30 backdrop-invert backdrop-opacity-30">
     <h2 class="text-5xl"><%= @score %> / <%= @question_size %> 問正解！</h2>
-    <div class="text-lg mt-10 flex">
-      <%= link_to "もう一度挑戦", categories_path %>
-    </div>
+      <div class="text-lg text-black mt-10 flex">
+        <%= link_to "もう一度挑戦", categories_path %>
+        <%= link_to "Xでシェア","https://twitter.com/intent/tweet?" +
+        "url=#{root_url}result/#{@score}" +
+        "&text=#{CGI.escape("世代別言葉クイズ！#{@score}点だったよー！！！ないすー！")}" +
+        "&hashtags=#{CGI.escape("世代別言葉クイズ")}",
+        target: "_blank", rel: "noopener", class: "ml-4" %>
+      </div>
+    
     <!-- ページ表示時に実行 -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
