@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def index
     @categories = Category.all
   end
@@ -14,7 +13,7 @@ class CategoriesController < ApplicationController
     @question = Question.find(question_id)
   end
 
-  #クイズ開始
+  # クイズ開始
   def start
     @category = Category.find(params[:id])
     Rails.logger.debug "カテゴリーID: #{@category}"
@@ -25,5 +24,4 @@ class CategoriesController < ApplicationController
   end
 
   private
-
 end
