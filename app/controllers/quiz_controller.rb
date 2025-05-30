@@ -1,5 +1,6 @@
 class QuizController < ApplicationController
   before_action :prepare_quiz_session, only: %i[show answer]
+  before_action :set_score_info, only: %i[answer result special]
 
 
   #解答
@@ -17,18 +18,28 @@ class QuizController < ApplicationController
     increment_correct_count if selected_choice.correct_answer?
 
     session[:current_index] += 1
+    
     #規定の問題数までループ
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
+    elsif @score == @question_size
+      redirect_to special_quiz_path(category_id: session[:category_id])
     else
-      redirect_to quiz_result_path
+      redirect_to quiz_result_path(category_id: session[:category_id])
     end
   end
 
   #結果表示
   def result
-    @question_size = session[:question_ids].size
-    @score = session[:correct_count]
+    @category = Category.find(params[:category_id])
+  end
+
+  #全問正解者結果表示
+  def set_score_info
+    @category = Category.find(session[:category_id])
+    unless @score == @question_size
+      redirect_to root_path, alert: "アクセスできません"
+    end
   end
 
   private
@@ -50,5 +61,10 @@ class QuizController < ApplicationController
       session[:answers] = []
       session[:correct_count] = []
     end
+  end
+
+  def set_score_info
+    @score = session[:correct_count]
+    @question_size = [:question_ids].size
   end
 end

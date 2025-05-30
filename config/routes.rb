@@ -28,5 +28,6 @@ Rails.application.routes.draw do
 
   post 'quiz/answer',  to: 'quiz#answer'
   get  'quiz/result',  to: 'quiz#result'
+  get 'quiz/special', to: 'quiz#special'
   
 end
