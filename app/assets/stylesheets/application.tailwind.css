@@ -25,3 +25,7 @@
          before:opacity-0 
          before:transition-opacity;
 }
+
+.hover-action{
+  @apply relative hover:before:content-['▶'] hover:before:mr-1
+}
