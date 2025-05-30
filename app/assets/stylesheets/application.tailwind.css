@@ -17,15 +17,24 @@
 }
 
 .choice-label {
-  @apply cursor-pointer block pl-6 relative 
-         peer-checked:text-yellow-300 
-         peer-checked:before:opacity-100 
-         before:absolute before:left-0 
-         before:content-['▶'] 
-         before:opacity-0 
-         before:transition-opacity;
+  @apply cursor-pointer flex items-center justify-center relative
+         peer-checked:text-yellow-300
+         before:content-['▶']
+         before:mr-1
+         before:opacity-0
+         before:transition-opacity
+         peer-checked:before:opacity-100;
 }
 
 .hover-action{
   @apply relative hover:before:content-['▶'] hover:before:mr-1
+}
+
+.flash-message > div {
+  position: relative;
+  z-index: 9999;
+  /* 以下は任意で色やサイズ調整 */
+  background-color: red;
+  color: white;
+  font-size: 20px;
 }

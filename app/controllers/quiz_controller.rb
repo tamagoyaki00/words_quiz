@@ -1,10 +1,5 @@
 class QuizController < ApplicationController
-<<<<<<< HEAD
-  before_action :prepare_quiz_session, only: %i[show answer]
-  before_action :set_score_info, only: %i[answer result special]
-=======
   before_action :prepare_quiz_session, only: %i[answer]
->>>>>>> main_layouts
 
 
   #解答
