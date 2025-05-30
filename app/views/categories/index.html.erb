@@ -4,7 +4,7 @@
     <ul class="flex flex-col space-y-5 mt-10 text-2xl">
       <% @categories.each do |category| %>
         <li>
-          <%= link_to start_category_path(category), class: "text-2xl mt-10 group block hover:text-gray-300 transition-colors duration-200"" do %>
+          <%= link_to start_category_path(category), class: "text-2xl mt-10 group block hover:text-gray-300 transition-colors duration-200" do %>
             <span class="relative pl-6 before:absolute before:left-0 before:opacity-0 group-hover:before:opacity-100 group-hover:before:content-['▶']">
               <%= category.name %>
             </span>
