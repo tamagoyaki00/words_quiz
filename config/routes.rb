@@ -18,16 +18,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  root 'categories#index'
+  root "categories#index"
 
   resources :categories, only: %i[index show] do
     member do
-      get :start, to: 'categories#start'
+      get :start, to: "categories#start"
     end
   end
 
-  post 'quiz/answer',  to: 'quiz#answer'
-  get  'quiz/result',  to: 'quiz#result'
-  get 'quiz/special', to: 'quiz#special'
-  
+  post "quiz/answer",  to: "quiz#answer"
+  get  "quiz/result",  to: "quiz#result"
+  get "quiz/special", to: "quiz#special"
 end
