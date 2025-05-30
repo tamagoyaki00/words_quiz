@@ -25,15 +25,3 @@
          before:opacity-0 
          before:transition-opacity;
 }
-
-.action-link {
-  @apply text-2xl mt-10 group block hover:text-gray-300 transition-colors duration-200;
-}
-
-.action-link-text {
-  @apply relative pl-6 
-         before:absolute before:left-0 
-         before:opacity-0 
-         group-hover:before:opacity-100 
-         group-hover:before:content-['▶'];
-}
