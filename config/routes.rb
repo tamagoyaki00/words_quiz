@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get "categories/index"
-  get "categories/show"
-  get "quiz/start"
-  get "quiz/show"
-  get "quiz/answer"
-  get "quiz/result"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -23,10 +17,11 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index show] do
     member do
       get :start, to: "categories#start"
+      post :answer, to: "categories#answer"
     end
   end
 
-  post "quiz/answer",  to: "quiz#answer"
   get  "quiz/result",  to: "quiz#result"
   get "quiz/special", to: "quiz#special"
+
 end
