@@ -12,7 +12,7 @@ h_category = Category.find_or_create_by!(name: "平成")
 s_category = Category.find_or_create_by!(name: "昭和")
 twochannel_category = Category.find_or_create_by!(name: "2ちゃんねる")
 
-#Z世代クイズ
+# Z世代クイズ
 z_category_questions = [
   {
     term: "「ちょえ〜」の意味はどれ？",
@@ -181,7 +181,7 @@ z_category_questions.each do |q|
   end
 end
 
-#平成クイズ
+# 平成クイズ
 
 h_category_questions =[
   {
@@ -291,7 +291,7 @@ h_category_questions.each do |q|
   end
 end
 
-#昭和クイズ
+# 昭和クイズ
 s_category_questions = [
   {
     term: "「一億玉砕」とは何を意味する？",
@@ -450,7 +450,7 @@ s_category_questions.each do |q|
   end
 end
 
-#2ちゃんクイズ
+# 2ちゃんクイズ
 twochannel_category_questions = [
   {
     term: "「gkbr」は何の略？",
