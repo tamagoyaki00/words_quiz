@@ -19,7 +19,6 @@ class CategoriesController < ApplicationController
   # クイズ開始
   def start
     @category = Category.find(params[:id])
-    Rails.logger.debug "カテゴリーID: #{@category}"
     session[:question_ids] = Question.where(category_id: params[:id]).pluck(:id).sample(5)
     session[:current_index] = 0
     session[:correct_count] = 0
@@ -50,6 +49,17 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def load_current_question_and_choices
+  @question = Question.find(session[:question_ids][session[:current_index]])
+  @shuffled_choices = @question.choices.shuffle
+  end
+
+  def increment_correct_count
+    session[:correct_count] ||= 0
+    session[:correct_count] += 1
+  end
+
 
   def prepare_quiz_session
     unless session[:question_ids]
