@@ -4,5 +4,4 @@ class Question < ApplicationRecord
   has_many :answers
 
   validates :term, presence: true
-
 end
