@@ -1,24 +1,24 @@
-# README
+## 世代別言葉クイズ
+全5問ランダムに出題され、言葉の意味を当てるクイズゲームです。
+昭和・平成・Z世代（おまけで２ちゃんねる）のカテゴリーに分かれています。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### ユーザー層
+最近の言葉わからない・・・。現代にちょっぴり遅れを感じている方
+昔の言葉わからない・・・。昔の流行りを知りたい方
+そういえば昔こういうワードが流行っていた！と懐かしみたい方
 
-Things you may want to cover:
+###　使い方
+クイズのカテゴリを選ぶ
+「始める」を押す
+クイズに答える
+★よかったらｘシェアしてください！
+※全問正解者のみ違うページに辿り着くので、全問正解するまで挑戦してみてください。
 
-* Ruby version
+### 使用技術
+Rails 7.2.1
+Ruby 3.2.3
+Tailwind CSS　4.1.7
+Render(デプロイ)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### お借りした素材
+背景画像： https://sozaino.site/
