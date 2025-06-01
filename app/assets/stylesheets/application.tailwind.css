@@ -7,7 +7,7 @@
 }
 
 .layout-main {
-  @apply h-full flex items-center justify-center;
+  @apply h-full flex flex-col items-center justify-center;
 }
 
 .layout-section {
@@ -28,13 +28,4 @@
 
 .hover-action{
   @apply relative hover:before:content-['▶'] hover:before:mr-1
-}
-
-.flash-message > div {
-  position: relative;
-  z-index: 9999;
-  /* 以下は任意で色やサイズ調整 */
-  background-color: red;
-  color: white;
-  font-size: 20px;
 }
