@@ -7,7 +7,7 @@
 }
 
 .layout-main {
-  @apply h-full flex items-center justify-center;
+  @apply h-full flex flex-col items-center justify-center;
 }
 
 .layout-section {

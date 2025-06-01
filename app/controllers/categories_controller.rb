@@ -29,9 +29,9 @@ class CategoriesController < ApplicationController
     selected_choice_id = params[:answer]
 
     if selected_choice_id.blank?
-      flash.now[:alert] = "選択肢を選んでください"
-      load_current_question_and_choices
-      render "categories/show" and return
+      flash[:alert] = "選択肢を選んでください"
+      redirect_to category_path(params[:id])
+      return
     end
     
     #解答の正誤判定
