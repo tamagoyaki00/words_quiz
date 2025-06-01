@@ -1,5 +1,4 @@
 class QuizController < ApplicationController
-
   # 結果表示
   def result
     @category = Category.find(session[:category_id])

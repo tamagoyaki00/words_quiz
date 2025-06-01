@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def index
     @categories = Category.all
   end
@@ -23,8 +22,8 @@ class CategoriesController < ApplicationController
   def start
     initialize_quiz_session(params[:id])
   end
-  
-    #解答
+
+  # 解答
   def answer
     selected_choice_id = params[:answer]
 
@@ -33,13 +32,13 @@ class CategoriesController < ApplicationController
       redirect_to category_path(params[:id])
       return
     end
-    
-    #解答の正誤判定
+
+    # 解答の正誤判定
     selected_choice = Choice.find(selected_choice_id)
     increment_correct_count if selected_choice.correct_answer?
 
     session[:current_index] += 1
-    #規定の問題数までループ
+    # 規定の問題数までループ
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
     else
@@ -49,19 +48,19 @@ class CategoriesController < ApplicationController
 
   private
 
-#問題と選択肢取得
+  # 問題と選択肢取得
   def load_current_question_and_choices
     @question = Question.find(session[:question_ids][session[:current_index]])
     @shuffled_choices = @question.choices.shuffle
   end
 
-#正解数カウント
+  # 正解数カウント
   def increment_correct_count
     session[:correct_count] ||= 0
     session[:correct_count] += 1
   end
 
-#クイズの初期化
+  # クイズの初期化
   def initialize_quiz_session(category_id)
     @category = Category.find(params[:id])
     session[:question_ids] = Question.where(category_id: params[:id]).pluck(:id).sample(5)
