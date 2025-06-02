@@ -7,9 +7,11 @@
 
       <div class="text-lg text-black mt-10 flex space-x-6">
         <%= link_to "別のカテゴリで再挑戦", categories_path, class: "hover-action" %>
+ 
+      <!-- Xシェア -->
         <%= link_to "Xでシェア","https://twitter.com/intent/tweet?" +
-        "url=#{root_url}result/#{@score}" +
-        "&text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで全問正解だったよー！！！すごいだろー！😉💯")}" +
+        "text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで全問正解だったよー！！！すごいだろー！😉💯")}" +
+        "&url=#{root_url}" +
         "&hashtags=#{CGI.escape("世代別言葉クイズ")}",
         target: "_blank", rel: "noopener", class: "hover-action" %>
       </div>
