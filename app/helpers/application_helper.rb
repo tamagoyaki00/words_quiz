@@ -13,12 +13,12 @@ module ApplicationHelper
         description: :description,
         type: "website",
         url: request.original_url,
-        image: "#{root_url}home.png",
+        image: "#{root_url}home2.png",
         locale: "ja_JP"
       },
       twitter: {
         card: "summary_large_image",
-        image: "#{root_url}home.png"
+        image: "#{root_url}home2.png"
       }
     }
   end
