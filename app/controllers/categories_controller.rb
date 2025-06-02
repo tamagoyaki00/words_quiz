@@ -33,13 +33,13 @@ class CategoriesController < ApplicationController
       return
     end
 
-    #解答の正誤判定
+    # 解答の正誤判定
     selected_choice = Choice.find(selected_choice_id)
     increment_correct_count if selected_choice.correct_answer?
 
     session[:current_index] += 1
-    
-    #規定の問題数までループ,終わったら結果画面に遷移
+
+    # 規定の問題数までループ,終わったら結果画面に遷移
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
     elsif session[:correct_count] == session[:question_ids].size
