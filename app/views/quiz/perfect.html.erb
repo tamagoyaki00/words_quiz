@@ -1,15 +1,19 @@
 <div class="layout-main">
   <div class="layout-section bg-green/30 backdrop-invert backdrop-opacity-30">
-    <h2 class="text-5xl"><%= @score %> / <%= @question_size %> 問正解！</h2>
-      <div class="text-lg text-black mt-10 flex">
-        <%= link_to "もう一度挑戦", categories_path %>
+    <h2 class="text-5xl">全問正解！</h2>
+    <h2 class="text-5xl">おめでとうございます🎉🎉🎉</h2>
+      <p class="text-2xl mt-10">🎖️あなたは<strong class="text-yellow-300">真の<%= @category.name %></strong>の民ですね！🎖️</p>
+    <div class="text-6xl mt-4 animate-bounce">🐥🐧🦍🐬🐱</div>
+
+      <div class="text-lg text-black mt-10 flex space-x-6">
+        <%= link_to "別のカテゴリで再挑戦", categories_path, class: "hover-action" %>
         <%= link_to "Xでシェア","https://twitter.com/intent/tweet?" +
         "url=#{root_url}result/#{@score}" +
-        "&text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで#{@score}点だったよー！！！ないすー！")}" +
+        "&text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで全問正解だったよー！！！すごいだろー！😉💯")}" +
         "&hashtags=#{CGI.escape("世代別言葉クイズ")}",
-        target: "_blank", rel: "noopener", class: "ml-4" %>
+        target: "_blank", rel: "noopener", class: "hover-action" %>
       </div>
-    
+      
     <!-- 紙吹雪（豪華ver） -->
     <script>
     const end = Date.now() + 15000;

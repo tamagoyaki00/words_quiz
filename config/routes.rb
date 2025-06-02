@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   end
 
   get "quiz/result",  to: "quiz#result"
-  get "quiz/special", to: "quiz#special"
+  get "quiz/perfect", to: "quiz#perfect"
 end

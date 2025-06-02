@@ -38,11 +38,16 @@ class CategoriesController < ApplicationController
     increment_correct_count if selected_choice.correct_answer?
 
     session[:current_index] += 1
-    # 規定の問題数までループ
+
+    # 規定の問題数までループ,終わったら結果画面に遷移
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
+    elsif session[:correct_count] == session[:question_ids].size
+      Rails.logger.debug "パーフェクト確認"
+      Rails.logger.debug "session[:category_id] = #{session[:category_id].inspect}"
+      redirect_to quiz_perfect_path(category_id: session[:category_id])
     else
-      redirect_to quiz_result_path
+      redirect_to quiz_result_path(category_id: session[:category_id])
     end
   end
 
