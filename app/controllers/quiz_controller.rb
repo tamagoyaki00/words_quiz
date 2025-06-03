@@ -1,19 +1,13 @@
 class QuizController < ApplicationController
   # 結果表示
   def result
-    Rails.logger.debug "リザルト確認"
-    Rails.logger.debug "session[:category_id] = #{session[:category_id].inspect}"
     @category = Category.find(session[:category_id])
-    Rails.logger.debug "@category = #{@category.inspect}"
     set_score_info
   end
 
   # 全問正解者結果表示
   def perfect
-    Rails.logger.debug "パーフェクト確認"
-    Rails.logger.debug "session[:category_id] = #{session[:category_id].inspect}"
     @category = Category.find(session[:category_id])
-    Rails.logger.debug "@category = #{@category.inspect}"
     set_score_info
     unless @score == @question_size
       redirect_to root_path, alert: "アクセスできません"
