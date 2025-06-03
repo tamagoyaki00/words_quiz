@@ -3,13 +3,14 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def show
-    unless session[:question_ids]
-      redirect_to start_category_path(id: params[:id]), alert: "クイズを開始してください"
-      return
+  def show 
+    @category = Category.find(params[:id])
+
+    # POSTできた場合はセッション初期化
+    if request.post? || session[:question_ids].blank?
+      initialize_quiz_session(@category.id)
     end
 
-    @category = Category.find(params[:id])
     question_id = session[:question_ids][session[:current_index]]
     if question_id.nil?
       redirect_to categories_path
@@ -20,18 +21,22 @@ class CategoriesController < ApplicationController
 
   # クイズ開始
   def start
-    initialize_quiz_session(params[:id])
+   @category = Category.find(params[:id])
   end
 
   # 解答
   def answer
     selected_choice_id = params[:answer]
+    Rails.logger.debug "セッションID確認: #{session[:question_ids].inspect}"
+Rails.logger.debug "問題のセッションID: #{session[:current_index].inspect}"
 
     if selected_choice_id.blank?
       flash[:alert] = "選択肢を選んでください"
       redirect_to category_path(params[:id])
       return
     end
+    Rails.logger.debug "セッションID: #{session[:question_ids].inspect}"
+Rails.logger.debug "確認: #{session[:current_index].inspect}"
 
     # 解答の正誤判定
     selected_choice = Choice.find(selected_choice_id)

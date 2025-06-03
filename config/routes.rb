@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index show] do
     member do
       get :start, to: "categories#start"
+      post :show
       post :answer, to: "categories#answer"
     end
   end

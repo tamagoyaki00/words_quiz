@@ -3,6 +3,8 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 
 document.addEventListener("turbo:load", () => {
+  if (!document.getElementById("choices")) return;
+  
   const form = document.querySelector("form");
   if (!form) return;
 
