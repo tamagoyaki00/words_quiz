@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def show 
+  def show
     @category = Category.find(params[:id])
 
     # POSTできた場合はセッション初期化
