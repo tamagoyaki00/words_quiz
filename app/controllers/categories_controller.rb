@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
     # POSTできた場合はセッション初期化
     if request.post? || session[:question_ids].blank?
-      initialize_quiz_session(@category.id)
+      initialize_quiz_session(params[:id])
     end
 
     question_id = session[:question_ids][session[:current_index]]
@@ -27,16 +27,12 @@ class CategoriesController < ApplicationController
   # 解答
   def answer
     selected_choice_id = params[:answer]
-    Rails.logger.debug "セッションID確認: #{session[:question_ids].inspect}"
-Rails.logger.debug "問題のセッションID: #{session[:current_index].inspect}"
 
     if selected_choice_id.blank?
       flash[:alert] = "選択肢を選んでください"
       redirect_to category_path(params[:id])
       return
     end
-    Rails.logger.debug "セッションID: #{session[:question_ids].inspect}"
-Rails.logger.debug "確認: #{session[:current_index].inspect}"
 
     # 解答の正誤判定
     selected_choice = Choice.find(selected_choice_id)
@@ -49,8 +45,6 @@ Rails.logger.debug "確認: #{session[:current_index].inspect}"
     if session[:current_index] < session[:question_ids].size
       redirect_to category_path(id: session[:category_id])
     elsif session[:correct_count] == session[:question_ids].size
-      Rails.logger.debug "パーフェクト確認"
-      Rails.logger.debug "session[:category_id] = #{session[:category_id].inspect}"
       redirect_to quiz_perfect_path(category_id: session[:category_id])
     else
       redirect_to quiz_result_path(category_id: session[:category_id])
@@ -73,7 +67,7 @@ Rails.logger.debug "確認: #{session[:current_index].inspect}"
 
   # クイズの初期化
   def initialize_quiz_session(category_id)
-    @category = Category.find(params[:id])
+    @category = Category.find(category_id)
     session[:question_ids] = Question.where(category_id: params[:id]).pluck(:id).sample(5)
     session[:current_index] = 0
     session[:correct_count] = 0
