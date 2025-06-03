@@ -10,21 +10,16 @@
 
     <!-- 解答 -->
     <%= form_with url: answer_category_path, method: :post, data: { turbo: false } do %>
-      <div class="flex flex-col space-y-8">
+      <div class="flex flex-col space-y-8" id="choices" data-correct="<%= @question.choices.find_by(correct: true)&.id %>">
         <% @question.choices.each do |choice| %>
           <div>
-            <!-- ラジオボタンは非表示に -->
             <%= radio_button_tag :answer, choice.id, false, id: "choice_#{choice.id}", class: "hidden peer" %>
-
-            <!-- 選択肢 -->
-            <%= label_tag "choice_#{choice.id}", class: "choice-label" do %>
-              <%= choice.content %>
-            <% end %>
+            <%= label_tag "choice_#{choice.id}", choice.content, class: "choice-label" %>
           </div>
         <% end %>
       </div>
-      <%= button_tag "回答", class: "text-black hover-action mt-8" %>
 
+      <%= button_tag "回答", class: "text-black hover-action mt-8" %>
     <% end %>
   </div>
 </div>

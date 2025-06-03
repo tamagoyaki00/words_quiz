@@ -35,6 +35,7 @@ class CategoriesController < ApplicationController
 
     # 解答の正誤判定
     selected_choice = Choice.find(selected_choice_id)
+    @question = selected_choice.question
     increment_correct_count if selected_choice.correct_answer?
 
     session[:current_index] += 1
