@@ -326,7 +326,7 @@ h_category_questions.each do |q|
   q[:choices].each do |choice_text|
     question.choices.create!(
       content: choice_text,
-      correct: choice_text == q[:correct]
+      correct: choice_text == q[:correct].strip
     )
   end
 end
