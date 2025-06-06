@@ -246,7 +246,7 @@ h_category_questions =[
   },
   {
     term: "「写メ」とは何のこと？",
-    correct: "写真付きメール",
+    correct: "写真付きのメール",
     choices: [
       "写真をSNSに投稿すること",
       "写真付きのメール",
