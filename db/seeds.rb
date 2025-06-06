@@ -192,7 +192,7 @@ z_category_questions.each do |q|
     category: z_category
 
   )
-  
+
   question.choices.destroy_all
 
   q[:choices].each do |choice_text|
@@ -598,7 +598,7 @@ twochannel_category_questions.each do |q|
   )
 
   question.choices.destroy_all
-  
+
   q[:choices].each do |choice_text|
     question.choices.create!(
       content: choice_text,
