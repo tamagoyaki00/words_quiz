@@ -187,11 +187,13 @@ z_category_questions = [
 ]
 
 z_category_questions.each do |q|
-  question = Question.create!(
+  question = Question.find_or_create_by!(
     term: q[:term],
     category: z_category
 
   )
+  
+  question.choices.destroy_all
 
   q[:choices].each do |choice_text|
     question.choices.create!(
@@ -317,11 +319,13 @@ h_category_questions =[
 ]
 
 h_category_questions.each do |q|
-  question = Question.create!(
+  question = Question.find_or_create_by!(
     term: q[:term],
     category: h_category
 
   )
+
+  question.choices.destroy_all
 
   q[:choices].each do |choice_text|
     question.choices.create!(
@@ -466,11 +470,13 @@ s_category_questions = [
 ]
 
 s_category_questions.each do |q|
-  question = Question.create!(
+  question = Question.find_or_create_by!(
     term: q[:term],
     category: s_category
 
   )
+
+  question.choices.destroy_all
 
   q[:choices].each do |choice_text|
     question.choices.create!(
@@ -585,12 +591,14 @@ twochannel_category_questions = [
 ]
 
 twochannel_category_questions.each do |q|
-  question = Question.create!(
+  question = Question.find_or_create_by!(
     term: q[:term],
     category: twochannel_category
 
   )
 
+  question.choices.destroy_all
+  
   q[:choices].each do |choice_text|
     question.choices.create!(
       content: choice_text,
