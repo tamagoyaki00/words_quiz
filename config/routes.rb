@@ -14,14 +14,17 @@ Rails.application.routes.draw do
 
   root "categories#index"
 
-  resources :categories, only: %i[index show] do
+  resources :categories, only: %i[index] do
     member do
-      get :start, to: "categories#start"
-      post :show
-      post :answer, to: "categories#answer"
+      get :start
     end
   end
 
-  get "quiz/result",  to: "quiz#result"
-  get "quiz/perfect", to: "quiz#perfect"
+  scope :quizzes do
+    get "start/:category_id", to: "quizzes#start_quiz", as: :start_quiz
+    get "question", to: "quizzes#show_question", as: :quiz_question
+    post "answer", to: "quizzes#answer", as: :answer_quiz_question
+    get "result",  to: "quizzes#result", as: :quiz_result
+    get "perfect", to: "quizzes#result_perfect", as: :quiz_result_perfect
+  end
 end
