@@ -9,12 +9,12 @@
 
 
     <!-- 解答 -->
-    <%= form_with url: answer_category_path, method: :post, data: { turbo: false } do %>
+    <%= form_with url: answer_quiz_question_path, method: :post, data: { turbo: false } do %>
       <div class="flex flex-col space-y-8" id="choices" data-correct="<%= @question.choices.find_by(correct: true)&.id %>">
         <% @question.choices.each do |choice| %>
           <div>
-            <%= radio_button_tag :answer, choice.id, false, id: "choice_#{choice.id}", class: "hidden peer" %>
-            <%= label_tag "choice_#{choice.id}", choice.content, class: "choice-label" %>
+            <%= radio_button_tag :selected_choice_id, choice.id, false, id: "selected_choice_id_#{choice.id}", class: "hidden peer" %>
+            <%= label_tag "selected_choice_id_#{choice.id}", choice.content, class: "choice-label" %>
           </div>
         <% end %>
       </div>

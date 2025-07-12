@@ -10,12 +10,10 @@
         </li>
       </ul>
 
-      <%= form_with url: category_path(@category), method: :post, data: { turbo: false }, class: "mt-10" do %>
-        <button type="submit" class="text-2xl group block hover:text-gray-300 transition-colors duration-200">
-          <span class="relative pl-6 before:absolute before:left-0 before:opacity-0 group-hover:before:opacity-100 group-hover:before:content-['▶']">
-            始める
-          </span>
-        </button>
+      <%= link_to start_quiz_path(category_id: @category.id), class: "mt-10 text-2xl group block hover:text-gray-300 transition-colors duration-200" do %>
+        <span class="relative pl-6 before:absolute before:left-0 before:opacity-0 group-hover:before:opacity-100 group-hover:before:content-['▶']">
+          始める
+        </span>
       <% end %>
 
   </div>

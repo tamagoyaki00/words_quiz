@@ -1,7 +1,7 @@
 <div class="layout-main">
   <div class="layout-section bg-green/30 backdrop-invert backdrop-opacity-30">
 
-    <h2 class="text-5xl"><%= @score %> / <%= @question_size %> 問正解！</h2>
+    <h2 class="text-5xl"><%= @correct_count %> / <%= @total_questions %> 問正解！</h2>
     <p class="text-2xl mt-10">残念😢</p>
     <p class="text-2xl "><%= @category.name %>の民ではないようです・・・</p>
     <p class="text-2xl">全問正解するまで挑戦してみよう！</p>
@@ -11,7 +11,7 @@
 
       <!-- Xシェア -->
         <%= link_to "Xでシェア","https://twitter.com/intent/tweet?" +
-        "text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで#{@score}点だったよー！！！ないすー！")}" +
+        "text=#{CGI.escape("世代別言葉クイズ！#{@category.name}カテゴリで#@correct_count}点だったよー！！！ないすー！")}" +
         "&url=#{root_url}" +
         "&hashtags=#{CGI.escape("世代別言葉クイズ")}",
         target: "_blank", rel: "noopener", class: "hover-action" %>
